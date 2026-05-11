@@ -19,9 +19,8 @@ modules:
 
   - type: dnf
     repos:
-      yum:
-        - https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo
-        - https://repo.librewolf.net/librewolf.repo
+      - https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo
+      - https://repo.librewolf.net/librewolf.repo
     install:
       packages:
         - flashrom
