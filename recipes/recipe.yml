@@ -1,13 +1,13 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: template
+name: my-bazzite
 # description will be included in the image's metadata
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/bazzite-dx
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -19,12 +19,13 @@ modules:
 
   - type: dnf
     repos:
-      copr:
-        - atim/starship
+      - https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo
+      - https://repo.librewolf.net/librewolf.repo
     install:
       packages:
-        - micro
-        - starship
+        - flashrom
+        - brave-origin-beta
+        - librewolf
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -38,7 +39,6 @@ modules:
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
 
