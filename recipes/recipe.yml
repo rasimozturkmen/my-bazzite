@@ -21,8 +21,6 @@ modules:
     install:
       packages:
         - flashrom
-        - brave-origin-beta
-        - librewolf
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
